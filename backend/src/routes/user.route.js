@@ -1,12 +1,24 @@
 import { Router } from "express";
-import { registerUser, loginUser } from "../controllers/user.controller.js";
+import {
+  registerUser,
+  loginUser,
+  logoutUser,
+  getUserInfo,
+  changeCurrentPassword,
+} from "../controllers/user.controller.js";
 import { upload } from "../middlewares/multer.middleware.js";
+import { verifyJWT } from "../middlewares/auth.middleware.js";
 
-const router = Router()
+const router = Router();
 
-router.route("/register").post(upload.single("avatar"),registerUser)
+router.route("/register").post(upload.single("avatar"), registerUser);
 
-router.route("/login").post(loginUser)
+router.route("/login").post(loginUser);
 
+router.route("/logout").post(verifyJWT, logoutUser);
+
+router.route("/change-password").post(verifyJWT, changeCurrentPassword);
+
+router.route("/me").get(verifyJWT, getUserInfo);
 
 export default router;
