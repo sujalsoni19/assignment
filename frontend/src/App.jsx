@@ -6,7 +6,7 @@ import Header from "./components/Header";
 function App() {
   return (
     <>
-      <div className="flex flex-col min-h-screen">
+      <div className="flex bg-sky-50 flex-col min-h-screen">
         <Header />
         <div className="flex-1">
           <Outlet />
