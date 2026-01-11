@@ -1,8 +1,11 @@
 import features from "../data/features.json";
 import Card from "../components/Card.jsx";
+import { useAuth } from "../context/Authcontext.jsx";
 import { Link } from "react-router-dom";
 
 export default function LandingPage() {
+//   const { user } = useAuth();
+
   return (
     <div className=" bg-slate-50 flex flex-col py-4 items-center px-6">
       <div className="flex flex-col items-center justify-center my-12 sm:my-24 text-center">
@@ -26,8 +29,17 @@ export default function LandingPage() {
 
       <div className="mt-7 sm:mt-14 mb-6">
         <Link to="/register">
-        <button className="p-4 text-center rounded-4xl cursor-pointer text-white bg-sky-500">Get Started</button>
-        </Link>
+            <button className="p-4 text-center rounded-4xl cursor-pointer text-white bg-sky-500">
+              Get Started
+            </button>
+          </Link>
+        {/* {!user && (
+          <Link to="/register">
+            <button className="p-4 text-center rounded-4xl cursor-pointer text-white bg-sky-500">
+              Get Started
+            </button>
+          </Link>
+        )} */}
       </div>
     </div>
   );
